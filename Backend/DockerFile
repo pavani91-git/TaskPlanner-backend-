@@ -1,0 +1,12 @@
+FROM eclipse-temurin:17-jdk-alpine
+
+WORKDIR /app
+
+# Build context starts from /Backend, so this works:
+COPY target/*.jar app.jar
+
+EXPOSE 8080
+
+ENV PORT=8080
+
+CMD ["sh", "-c", "java -Dserver.port=$PORT -jar app.jar"]
